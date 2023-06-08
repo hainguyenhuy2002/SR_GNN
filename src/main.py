@@ -22,6 +22,7 @@ logging.basicConfig(level=logging.DEBUG,
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', default='diginetica', help='dataset name: diginetica/yoochoose1_4/yoochoose1_64/sample')
+
 parser.add_argument('--batch_size', type=int, default=100, help='input batch size')
 parser.add_argument('--hidden_size', type=int, default=100, help='hidden state size')
 parser.add_argument('--epoch', type=int, default=10, help='the number of epochs to train for')
@@ -36,14 +37,15 @@ logging.warning(opt)
 
 def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-    cur_dir = os.getcwd()
-    train_dataset = MultiSessionsGraph(cur_dir + '/../datasets/' + opt.dataset, phrase='train')
+    path = '/kaggle/input/dataaaaaa/'
+    out_path = '/kaggle/working/'
+    # cur_dir = os.getcwd()
+    train_dataset = MultiSessionsGraph(path+ opt.dataset, phrase='train')
     train_loader = DataLoader(train_dataset, batch_size=opt.batch_size, shuffle=True)
-    test_dataset = MultiSessionsGraph(cur_dir + '/../datasets/' + opt.dataset, phrase='test')
+    test_dataset = MultiSessionsGraph(path + opt.dataset, phrase='test')
     test_loader = DataLoader(test_dataset, batch_size=opt.batch_size, shuffle=False)
 
-    log_dir = cur_dir + '/../log/' + str(opt.dataset) + '/' + str(opt)
+    log_dir = out_path + 'log/' + str(opt.dataset) + '/' + str(opt)
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
     logging.warning('logging to {}'.format(log_dir))
