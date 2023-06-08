@@ -40,12 +40,12 @@ def main():
     path = '/kaggle/input/dataaaaaa/'
     out_path = '/kaggle/working/'
     # cur_dir = os.getcwd()
-    train_dataset = MultiSessionsGraph(path+ opt.dataset, phrase='train')
+    train_dataset = MultiSessionsGraph(path, phrase='train')
     train_loader = DataLoader(train_dataset, batch_size=opt.batch_size, shuffle=True)
-    test_dataset = MultiSessionsGraph(path + opt.dataset, phrase='test')
+    test_dataset = MultiSessionsGraph(path, phrase='test')
     test_loader = DataLoader(test_dataset, batch_size=opt.batch_size, shuffle=False)
 
-    log_dir = out_path + 'log/' + str(opt.dataset) + '/' + str(opt)
+    log_dir = out_path + 'log/' + str(opt)
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
     logging.warning('logging to {}'.format(log_dir))
