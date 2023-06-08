@@ -37,7 +37,7 @@ logging.warning(opt)
 
 def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    path = '/kaggle/input/dataaaaaa/'
+    path = '/kaggle/input/'
     out_path = '/kaggle/working/'
     # cur_dir = os.getcwd()
     train_dataset = MultiSessionsGraph(path, phrase='train')

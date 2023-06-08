@@ -34,7 +34,7 @@ class MultiSessionsGraph(InMemoryDataset):
         pass
     
     def process(self):
-        data = pickle.load(open(self.raw_dir + '/' + self.raw_file_names[0], 'rb'))
+        data = pickle.load(open(self.raw_file_names[0], 'rb'))
         data_list = []
         
         for sequences, y in zip(data[0], data[1]):
